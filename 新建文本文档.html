@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园NFC服务</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind自定义颜色和字体 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5', // 主色调：靛蓝色
+                        secondary: '#10B981', // 辅助色：绿色
+                        accent: '#F59E0B', // 强调色：琥珀色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card-shadow {
+                box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.1), 0 8px 10px -6px rgba(79, 70, 229, 0.1);
+            }
+            .hover-scale {
+                transition: transform 0.3s ease;
+            }
+            .hover-scale:hover {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 to-purple-50 min-h-screen flex flex-col">
+    <!-- 顶部导航 -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm py-4 px-6 sticky top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fa fa-nfc-symbol text-primary text-2xl"></i>
+                <h1 class="text-xl font-bold text-gray-800">校园NFC服务</h1>
+            </div>
+            <p class="text-sm text-gray-500">轻触NFC卡触发</p>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="flex-grow container mx-auto px-4 py-12">
+        <!-- 欢迎信息 -->
+        <div class="text-center mb-12">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">请选择您需要的服务</h2>
+            <p class="text-gray-600 max-w-md mx-auto">通过NFC卡快速访问校园热门服务，便捷生活从这里开始</p>
+        </div>
+
+        <!-- 功能选项卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <!-- 游戏选项 -->
+            <div class="bg-white rounded-2xl p-6 card-shadow hover-scale cursor-pointer" onclick="window.location.href='games.html'">
+                <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa fa-gamepad text-accent text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">休闲游戏</h3>
+                <p class="text-gray-500 text-sm">课间放松小游戏，包含经典益智类游戏集合</p>
+                <div class="mt-4 text-accent font-medium text-sm flex items-center">
+                    <span>开始游戏</span>
+                    <i class="fa fa-arrow-right ml-2"></i>
+                </div>
+            </div>
+
+            <!-- 电影选项 -->
+            <div class="bg-white rounded-2xl p-6 card-shadow hover-scale cursor-pointer" onclick="window.location.href='movies.html'">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa fa-film text-primary text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">电影推荐</h3>
+                <p class="text-gray-500 text-sm">校园热门电影推荐，影评分享和影视资讯</p>
+                <div class="mt-4 text-primary font-medium text-sm flex items-center">
+                    <span>查看推荐</span>
+                    <i class="fa fa-arrow-right ml-2"></i>
+                </div>
+            </div>
+
+            <!-- 校园导航选项 -->
+            <div class="bg-white rounded-2xl p-6 card-shadow hover-scale cursor-pointer" onclick="window.location.href='navigation.html'">
+                <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa fa-map-marker text-secondary text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">校园导航</h3>
+                <p class="text-gray-500 text-sm">校园地图导航，教学楼、食堂、图书馆位置查询</p>
+                <div class="mt-4 text-secondary font-medium text-sm flex items-center">
+                    <span>开始导航</span>
+                    <i class="fa fa-arrow-right ml-2"></i>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-6 px-4">
+        <div class="container mx-auto text-center text-sm">
+            <p>校园NFC服务系统 &copy; 2025 毕业设计</p>
+            <p class="mt-1 text-gray-400">轻触NFC卡即可唤醒本页面</p>
+        </div>
+    </footer>
+
+    <!-- 简单的交互脚本 -->
+    <script>
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.hover-scale');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+
+        // 为卡片添加初始样式
+        document.querySelectorAll('.hover-scale').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+    </script>
+</body>
+</html>
+
